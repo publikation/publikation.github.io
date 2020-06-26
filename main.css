@@ -315,4 +315,17 @@ body {
     .mobileHide {
         display: none;
     }
+    
+    #bottomNav {
+        height: 125px;
+    }
+    
+    .pickerIMG {
+        max-height: 200px;
+        margin-bottom: -150px;
+    }
+    
+    .middleContainer {
+        padding-bottom: 200px;
+    }
 }

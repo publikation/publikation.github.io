@@ -160,6 +160,37 @@ barba.init({
                 counter.innerHTML = (index + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false}) + ' / ' + images.length;
             });
             
+            document.onkeydown = function(event) {
+                if(event.keyCode == 39){
+                    if(index == images.length-1) {
+                    index = -1;
+                    }
+                    mainImage.src = images[++index].src;
+                    if(index == 0) {
+                        upCard = images.length-1;
+                    } else {
+                        upCard = index-1;
+                    }
+                    images[index].style.transform = 'translateY(-80px)';
+                    images[upCard].style.transform = 'translateY(0px)';
+                    counter.innerHTML = (index + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false}) + ' / ' + images.length;
+                }
+                if(event.keyCode == 37){
+                    if(index == 0) {
+                    index = images.length;
+                    }
+                    mainImage.src = images[--index].src;
+                    if(index == images.length-1) {
+                        upCard = 0;
+                    } else {
+                        upCard = index+1;
+                    }
+                    images[index].style.transform = 'translateY(-80px)';
+                    images[upCard].style.transform = 'translateY(0px)';
+                    counter.innerHTML = (index + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false}) + ' / ' + images.length;
+                }
+            }
+            
             for (i = 0; i < images.length; i++) {
                 if(images[i].src === mainImage.src) {
                     images[i].style.transform = 'translateY(-80px)'

@@ -171,8 +171,8 @@ body {
     top: 0;
     width: 100vw;
     height: 100vh;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 150px;
+    padding-bottom: 150px;
     display: flex;
     box-sizing: border-box;
     align-content: center;
@@ -181,11 +181,15 @@ body {
 
 .mainIMG {
     object-fit: contain;
-    max-width: 90vw;
+    min-height: calc(100vh-160px);
+    min-width: 90vw;
+    max-width: 800px;
+    margin-left: 20px;
+    margin-right: 20px;
     filter: drop-shadow(0 -1px 0 white)
     drop-shadow(0 1px 0 white)
     drop-shadow(-1px 0 0 white)
-    drop-shadow(1px 0 0 white)
+    drop-shadow(1px 0 0 white);
 }
 
 #imageSelector {
@@ -285,4 +289,10 @@ body {
 
 .name:hover {
     font-variation-settings: 'wght' 1000, 'slnt' -5, 'MONO' 0;
+}
+
+@media only screen and (max-width: 800px) {
+    .middleNavContain {
+        display: none;
+    }
 }

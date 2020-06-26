@@ -1,0 +1,288 @@
+@font-face {
+  font-family: 'Recursive';
+  font-style: oblique 0deg 15deg;
+  font-weight: 300 1000;
+  font-display: swap;
+  src: url('/fonts/Recursive_VF_1.52--subset_range_english_basic.woff2') format('woff2');
+  unicode-range: U+0020-007F,U+00A9,U+2190-2193,U+2018,U+2019,U+201C,U+201D,U+2022;
+}
+
+/* unicode latin-1 letters, basic european diacritics */
+@font-face {
+  font-family: 'Recursive';
+  font-style: oblique 0deg 15deg;
+  font-weight: 300 1000;
+  font-display: swap;
+  src: url('/fonts/Recursive_VF_1.52--subset_range_latin_1.woff2') format('woff2');
+  unicode-range: U+00C0-00FF;
+}
+
+/* unicode latin-1, punc/symbols & arrows (↔ ↕ ↖ ↗ ↘ ↙) */
+@font-face {
+  font-family: 'Recursive';
+  font-style: oblique 0deg 15deg;
+  font-weight: 300 1000;
+  font-display: swap;
+  src: url('/fonts/Recursive_VF_1.52--subset_range_latin_1_punc.woff2') format('woff2');
+  unicode-range: U+00A0-00BF,U+2194-2199;
+}
+
+/* unicode latin A extended */
+@font-face {
+  font-family: 'Recursive';
+  font-style: oblique 0deg 15deg;
+  font-weight: 300 1000;
+  font-display: swap;
+  src: url('/fonts/Recursive_VF_1.52--subset_range_latin_ext.woff2') format('woff2');
+  unicode-range: U+0100-017F;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Recursive';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+#bg-center {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+
+#image-enter-bg {
+    position: fixed;
+    top: 0;
+    z-index: -2;
+    background-image: url(assets/home-images/home01.jpg);
+    background-size: cover;
+}
+
+#enter-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: all .6s cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+#enter-button {
+    width: 60vw;
+    height: 20vw;
+    max-width: 600px;
+    max-height: 200px;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border: solid white;
+    border-width: 1px;
+    font-size: min(4vw, 50px);
+    font-variation-settings: 'wght' 1000, 'slnt' -15;
+    transition-property: font-variation-settings, color, text-shadow, border;
+    transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    transition-duration: .8s;
+    cursor: pointer;
+    text-shadow:
+       0px 0px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+#enter-button:hover {
+    font-variation-settings: 'wght' 500, 'slnt' -15;
+    color: black;
+    border: 1px solid black;
+    text-shadow:
+       0px 0px 0 #fff,
+     -1px -1px 0 #fff,  
+      1px -1px 0 #fff,
+      -1px 1px 0 #fff,
+       1px 1px 0 #fff;
+}
+
+.navBar {
+    position: fixed;
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+}
+
+#topNav {
+    font-size: 12px;
+    font-variation-settings: 'wght' 200;
+    margin-top: 0px;
+    z-index: 9999;
+    top: 0;
+}
+
+#topNavAbout {
+    font-size: 12px;
+    font-variation-settings: 'wght' 200;
+    margin-top: 0px;
+    z-index: 9999;
+    top: 0;
+}
+
+#bottomNav {
+    bottom: 0;
+    border-top: 1px solid white;
+    border-bottom: none;
+    padding-left: 10px;
+    cursor: grab;
+}
+
+#bottomNav:active {
+    cursor: grabbing;
+}
+
+.middleContainer {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    display: flex;
+    box-sizing: border-box;
+    align-content: center;
+    justify-content: center;
+}
+
+.mainIMG {
+    object-fit: contain;
+    max-width: 90vw;
+    filter: drop-shadow(0 -1px 0 white)
+    drop-shadow(0 1px 0 white)
+    drop-shadow(-1px 0 0 white)
+    drop-shadow(1px 0 0 white)
+}
+
+#imageSelector {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.pickerIMG {
+    object-fit: contain;
+    max-height: 250px;
+    border: 1px solid white;
+    margin-bottom: -220px;
+    margin-right: 20px;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    transition-duration: .4s;
+}
+
+.middleNavContain {
+    font-size: 12px;
+    font-variation-settings: 'wght' 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 50vw;
+    margin-left: -50px;
+    width: 100px;
+    height: 80px;
+}
+
+.navLink {
+    color: white;
+    font-variation-settings: 'wght' 200, 'slnt' 0;
+    text-decoration: none;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    transition-duration: .4s;
+}
+
+.navLink:hover {
+    font-variation-settings: 'wght' 800, 'slnt' -5;
+}
+
+#ourNames {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    margin-top: -100px;
+}
+
+#aboutContainerMiddle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutTextHolder {
+    position: relative;
+    width: 400px;
+    margin-top: 20px;
+}
+
+.aboutText {
+    position: absolute;
+    left: 0;
+    font-variation-settings: 'wght' 200, 'slnt' 0, 'MONO' 1;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    transition-duration: 1s;
+    font-size: 12px;
+}
+
+#jackText {
+    clip-path: polygon(25% 0%, 25% 0, 0 100%, 0% 100%);
+    margin-right: 0px;
+}
+
+#robText {
+    clip-path: polygon(25% 0%, 25% 0, 0 100%, 0% 100%);
+    margin-right: 0px;
+}
+
+#noahText {
+    clip-path: polygon(25% 0%, 25% 0, 0 100%, 0% 100%);
+    margin-right: 0px;
+}
+
+.name {
+    cursor: pointer;
+    transition-property: all;
+    transition-duration: .4s;
+    font-variation-settings: 'wght' 400, 'slnt' 0, 'MONO' 0;
+}
+
+.name:hover {
+    font-variation-settings: 'wght' 1000, 'slnt' -5, 'MONO' 0;
+}

@@ -106,13 +106,21 @@ barba.init({
     },
     {
         namespace:'home',
+        beforeEnter() {
+            const images = document.querySelectorAll('.pickerIMG');
+            counter.innerHTML = '01 / ' + images.length;  
+        },
         afterEnter(data) {
             const images = document.querySelectorAll('.pickerIMG');
             const mainImage = document.querySelector('.mainIMG');
             const counter = document.querySelector('#counter');
+            const leftButton = document.querySelector('#leftButton');
+            const rightButton = document.querySelector('#rightButton');
             const delta = 6;
             let startX;
             let startY;
+            let index = 0;
+            let upCard = index-1;
             
             function indexInClass(collection, node) {
               for (var i = 0; i < collection.length; i++) {
@@ -121,6 +129,36 @@ barba.init({
               }
               return -1;
             }
+            //All the stuff below was DYLAN JUDY GROSS
+            rightButton.addEventListener('click', function( event ) {
+                if(index == images.length-1) {
+                    index = -1;
+                }
+                mainImage.src = images[++index].src;
+                if(index == 0) {
+                    upCard = images.length-1;
+                } else {
+                    upCard = index-1;
+                }
+                images[index].style.transform = 'translateY(-80px)';
+                images[upCard].style.transform = 'translateY(0px)';
+                counter.innerHTML = (index + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false}) + ' / ' + images.length;
+            });
+            
+            leftButton.addEventListener('click', function( event ) {
+                if(index == 0) {
+                    index = images.length;
+                }
+                mainImage.src = images[--index].src;
+                if(index == images.length-1) {
+                    upCard = 0;
+                } else {
+                    upCard = index+1;
+                }
+                images[index].style.transform = 'translateY(-80px)';
+                images[upCard].style.transform = 'translateY(0px)';
+                counter.innerHTML = (index + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false}) + ' / ' + images.length;
+            });
             
             for (i = 0; i < images.length; i++) {
                 if(images[i].src === mainImage.src) {
@@ -145,13 +183,14 @@ barba.init({
                     if (diffX < delta && diffY < delta) {
                         mainImage.src = this.src;
                         let imgLoc = indexInClass(images, this) + 1;
-                        counter.innerHTML = imgLoc.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false}) + ' / 40';
-                        for (i = 0; i < images.length; i ++) {
-                            if(images[i].src === mainImage.src) {
-                                images[i].style.transform = 'translateY(-80px)'
+                        index = imgLoc-1;
+                        counter.innerHTML = imgLoc.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false}) + ' / ' + images.length;
+                        for (j = 0; j < images.length; j ++) {
+                            if(images[j].src === mainImage.src) {
+                                images[j].style.transform = 'translateY(-80px)'
                             }
-                            if(images[i].src !== mainImage.src && images[i].style.transform === 'translateY(-80px)'){
-                                images[i].style.transform = 'translateY(0px)'
+                            if(images[j].src !== mainImage.src && images[j].style.transform === 'translateY(-80px)'){
+                                images[j].style.transform = 'translateY(0px)'
                             }
                         }
                     }

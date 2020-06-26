@@ -208,6 +208,10 @@ body {
     transition-duration: .4s;
 }
 
+#counter {
+    cursor: default;
+}
+
 .middleNavContain {
     font-size: 12px;
     font-variation-settings: 'wght' 200;
@@ -216,9 +220,10 @@ body {
     justify-content: center;
     position: fixed;
     left: 50vw;
-    margin-left: -50px;
-    width: 100px;
+    margin-left: -90px;
+    width: 180px;
     height: 80px;
+    z-index: 9999999999;
 }
 
 .navLink {
@@ -295,11 +300,26 @@ body {
     display: none;
 }
 
+.pageButton {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#leftButton {
+    margin-right: 20px;
+}
+
+#rightButton {
+    margin-left: 20px;
+}
+
 @media only screen and (max-width: 700px) {
-    .middleNavContain {
-        display: none;
-    }
-    
     #ourNames {
         width: 300px;
     }

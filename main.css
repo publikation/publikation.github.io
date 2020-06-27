@@ -333,6 +333,10 @@ body {
     margin-left: 20px;
 }
 
+#aboutContainerMiddle {
+    cursor: auto;
+}
+
 @media only screen and (max-width: 700px) {
     .middleNavContain {
         margin-top: 80px;

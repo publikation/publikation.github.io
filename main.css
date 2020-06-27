@@ -378,7 +378,12 @@ body {
         margin-bottom: -150px;
     }
     
-    .middleContainer {
-        padding-bottom: 280px;
+    #mainIMGContain {
+        margin-top: 0px;
+        margin-right: 20px;
+    }
+    
+    .mainIMG {
+        max-width: 80vw;
     }
 }

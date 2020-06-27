@@ -168,24 +168,38 @@ body {
 
 .middleContainer {
     position: fixed;
-    top: 0;
+    top: 80px;
     width: 100vw;
-    height: 100vh;
-    padding-top: 150px;
-    padding-bottom: 150px;
+    height: calc(100vh - 160px);
     display: flex;
-    box-sizing: border-box;
     align-content: center;
     justify-content: center;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    transition-duration: .4s;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+#mainIMGContain {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 240px);
 }
 
 .mainIMG {
     object-fit: contain;
-    min-height: calc(100vh-160px);
+    height: 100%;
     min-width: 90vw;
     max-width: 800px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
     filter: drop-shadow(0 -1px 0 white)
     drop-shadow(0 1px 0 white)
     drop-shadow(-1px 0 0 white)

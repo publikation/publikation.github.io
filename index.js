@@ -116,11 +116,14 @@ barba.init({
             const counter = document.querySelector('#counter');
             const leftButton = document.querySelector('#leftButton');
             const rightButton = document.querySelector('#rightButton');
+            const middleContainer = document.querySelector('.middleContainer');
+            const mainIMGContain = document.querySelector('#mainIMGContain')
             const delta = 6;
             let startX;
             let startY;
             let index = 0;
             let upCard = index-1;
+            let mouseOn;
             
             function indexInClass(collection, node) {
               for (var i = 0; i < collection.length; i++) {
@@ -129,7 +132,7 @@ barba.init({
               }
               return -1;
             }
-            //All the stuff below was DYLAN JUDY GROSS
+            //All the bad stuff below was DYLAN JUDY GROSS
             rightButton.addEventListener('click', function( event ) {
                 if(index == images.length-1) {
                     index = -1;
@@ -190,6 +193,31 @@ barba.init({
                     counter.innerHTML = (index + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false}) + ' / ' + images.length;
                 }
             }
+
+            middleContainer.addEventListener('mouseover', function(event) {
+                mainIMGContain.style.transform = 'scale(1.5)';
+                mouseOn = true;
+            });
+            
+            middleContainer.addEventListener('mouseleave', function(event) {
+                mainIMGContain.style.transform = 'scale(1)';
+                mainIMGContain.style.left = 0;
+                mainIMGContain.style.top = 0;
+                mouseOn = false;
+            });
+            
+            Number.prototype.map = function (in_min, in_max, out_min, out_max) {
+              return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+            }
+            
+            document.addEventListener('mousemove', function(event) {
+                const mouseX = event.pageX.map(0, 100, 0, 50) + 'px - 25vw';
+                const mouseY = event.pageY.map(0, 100, 0, 50) + 'px - 25vh';
+                if(mouseOn == true){
+                    mainIMGContain.style.left = 'calc(' + mouseX + ')';
+                    mainIMGContain.style.top = 'calc(' + mouseY + ')';    
+                }
+            });
             
             for (i = 0; i < images.length; i++) {
                 if(images[i].src === mainImage.src) {

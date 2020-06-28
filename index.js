@@ -123,7 +123,7 @@ barba.init({
             let startY;
             let index = 0;
             let upCard = index-1;
-            let mouseOn;
+            let mouseOn = false;
             
             function indexInClass(collection, node) {
               for (var i = 0; i < collection.length; i++) {
@@ -194,13 +194,23 @@ barba.init({
                 }
             }
 
-            middleContainer.addEventListener('mouseover', function(event) {
-                mainIMGContain.style.transform = 'scale(1.5)';
-                mouseOn = true;
+            middleContainer.addEventListener('click', function(event) {
+                if(mouseOn == false) {
+                    mainIMGContain.style.transform = 'scale(1.5)';
+                    mainIMGContain.style.cursor = 'zoom-out';
+                    mouseOn = true;
+                } else {
+                    mainIMGContain.style.transform = 'scale(1)';
+                    mainIMGContain.style.cursor = 'zoom-in';
+                    mainIMGContain.style.left = 0;
+                    mainIMGContain.style.top = 0;
+                    mouseOn = false;   
+                }
             });
             
             middleContainer.addEventListener('mouseleave', function(event) {
                 mainIMGContain.style.transform = 'scale(1)';
+                mainIMGContain.style.cursor = 'zoom-in';
                 mainIMGContain.style.left = 0;
                 mainIMGContain.style.top = 0;
                 mouseOn = false;
